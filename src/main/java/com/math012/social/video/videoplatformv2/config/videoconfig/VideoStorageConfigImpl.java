@@ -5,13 +5,13 @@ import org.springframework.context.annotation.Configuration;
 
 /*
         A ideia inicial é criar um diretorio no disco local C para salvar todos os videos.
-        O caminho foi especificado através do application.properties.
+        O caminho foi definido através do application.properties.
  */
 
 
 @Configuration
 @ConfigurationProperties(prefix = "file")
-public class VideoStorageConfig {
+public class VideoStorageConfigImpl {
 
 
 

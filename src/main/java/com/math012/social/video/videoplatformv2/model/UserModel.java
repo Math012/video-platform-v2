@@ -7,19 +7,21 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
-@Entity(name = "users")
+@Entity
 public class UserModel {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private UUID id;
 
     @Size(min = 2, message = "full name is blank")
     private String fullName;
+
     @Size(min = 2, message = "last name is blank")
     private String lastName;
+
     @Size(min = 2, message = "username is blank")
     private String username;
+
     @Size(min = 8, max = 20, message = "your password needs a minimum of 8 characters and a maximum of 20")
     private String password;
 

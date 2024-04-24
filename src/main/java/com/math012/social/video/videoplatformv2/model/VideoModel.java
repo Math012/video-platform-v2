@@ -5,11 +5,10 @@ import jakarta.validation.constraints.Size;
 
 import java.util.UUID;
 
-@Entity(name = "videos")
+@Entity
 public class VideoModel {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private UUID id;
 
     @Size(min = 4)

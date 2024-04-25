@@ -3,6 +3,7 @@ package com.math012.social.video.videoplatformv2.model;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Size;
 
+import java.time.Instant;
 import java.util.UUID;
 
 @Entity
@@ -20,16 +21,19 @@ public class VideoModel {
 
     private String url;
 
+    private Instant date;
+
     @ManyToOne
     @JoinColumn(name = "uuid_user")
     private UserModel user;
 
     public VideoModel(){}
 
-    public VideoModel(String title, String description, String url, UserModel user) {
+    public VideoModel(String title, String description, String url, Instant date, UserModel user) {
         this.title = title;
         this.description = description;
         this.url = url;
+        this.date = date;
         this.user = user;
     }
 
@@ -63,6 +67,14 @@ public class VideoModel {
 
     public void setUrl(String url) {
         this.url = url;
+    }
+
+    public Instant getDate() {
+        return date;
+    }
+
+    public void setDate(Instant date) {
+        this.date = date;
     }
 
     public UserModel getUser() {

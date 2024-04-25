@@ -29,11 +29,10 @@ public class VideoModel {
 
     public VideoModel(){}
 
-    public VideoModel(String title, String description, String url, Instant date, UserModel user) {
+    public VideoModel(String title, String description, String url, UserModel user) {
         this.title = title;
         this.description = description;
         this.url = url;
-        this.date = date;
         this.user = user;
     }
 

@@ -11,6 +11,7 @@ import java.util.UUID;
 public class UserModel {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.UUID)
     private UUID id;
 
     @Size(min = 2, message = "full name is blank")
@@ -30,8 +31,7 @@ public class UserModel {
 
     public UserModel(){}
 
-    public UserModel(UUID id, String fullName, String lastName, String username, String password) {
-        this.id = id;
+    public UserModel(String fullName, String lastName, String username, String password) {
         this.fullName = fullName;
         this.lastName = lastName;
         this.username = username;

@@ -25,4 +25,10 @@ public class CustomHandlerException extends ResponseEntityExceptionHandler {
         var exception = new StructException(new Date(),e.getMessage(),request.getDescription(false));
         return new ResponseEntity<>(exception, HttpStatus.BAD_REQUEST);
     }
+
+    @ExceptionHandler(VideoNotFoundException.class)
+    public ResponseEntity<StructException> handlerVideoNotFoundException(Exception e, WebRequest request){
+        var exception = new StructException(new Date(), e.getMessage(), request.getDescription(false));
+        return new ResponseEntity<>(exception, HttpStatus.NOT_FOUND);
+    }
 }

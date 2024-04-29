@@ -31,4 +31,10 @@ public class CustomHandlerException extends ResponseEntityExceptionHandler {
         var exception = new StructException(new Date(), e.getMessage(), request.getDescription(false));
         return new ResponseEntity<>(exception, HttpStatus.NOT_FOUND);
     }
+
+    @ExceptionHandler(TokenProviderException.class)
+    public ResponseEntity<StructException> handlerTokenProviderException(Exception e, WebRequest request){
+        var exception = new StructException(new Date(), e.getMessage(), request.getDescription(false));
+        return new ResponseEntity<>(exception, HttpStatus.BAD_REQUEST);
+    }
 }

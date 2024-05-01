@@ -17,16 +17,17 @@ public class UserModel implements UserDetails {
     @GeneratedValue(strategy = GenerationType.UUID)
     private UUID id;
 
-    @Size(min = 2, message = "full name is blank")
+    @Column(nullable = false)
     private String fullName;
 
-    @Size(min = 2, message = "last name is blank")
+    @Column(nullable = false)
     private String lastName;
 
-    @Size(min = 2, message = "username is blank")
+
+    @Column(unique = true, nullable = false)
     private String username;
 
-    @Size(min = 8, max = 20, message = "your password needs a minimum of 8 characters and a maximum of 20")
+    @Column(nullable = false)
     private String password;
 
     @OneToMany(mappedBy = "user")

@@ -1,5 +1,6 @@
 package com.math012.social.video.videoplatformv2.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Size;
 
@@ -16,10 +17,12 @@ public class CommentModel {
     @Size(min = 1, max = 400, message = "Minumum is 1 and maximum is 400")
     private String text;
 
+    @JsonIgnore
     @ManyToOne
     @JoinColumn(name = "uuid_user")
     private UserModel user;
 
+    @JsonIgnore
     @ManyToOne
     @JoinColumn(name = "uuid_video")
     private VideoModel video;

@@ -30,8 +30,16 @@ public class SecurityConfiguration {
                 .csrf(csrf -> csrf.disable())
                 .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .authorizeHttpRequests(authorize -> authorize
-                        .requestMatchers("/auth/v2/auth/login","/auth/v2/auth/register").permitAll()
-                        .requestMatchers("/api/**").authenticated()
+                        .requestMatchers(
+                                "/v2/auth/login"
+                                ,"/v2/auth/register"
+                                ,"/videos/home"
+                                ,"/comment/**"
+                                ,"/videos/user/**"
+                                ,"/api/v2/post/video/download/**"
+                        )
+                        .permitAll()
+                        .requestMatchers("/api/v2/**").authenticated()
                 )
                 .addFilterBefore(securityFilter, UsernamePasswordAuthenticationFilter.class)
                 .build();

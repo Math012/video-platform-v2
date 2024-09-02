@@ -1,12 +1,16 @@
 package com.math012.social.video.videoplatformv2.config.videoconfig;
 
 import com.math012.social.video.videoplatformv2.config.videoconfig.interfaces.VideoStorageConfig;
+import com.math012.social.video.videoplatformv2.exception.LoadVideoException;
+import com.math012.social.video.videoplatformv2.exception.TokenProviderException;
 import com.math012.social.video.videoplatformv2.exception.UserNotFoundException;
 import com.math012.social.video.videoplatformv2.exception.VideoStorageException;
 import com.math012.social.video.videoplatformv2.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.core.io.Resource;
+import org.springframework.core.io.UrlResource;
 import org.springframework.util.StringUtils;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -35,7 +39,6 @@ public class VideoStorageConfigImpl implements VideoStorageConfig {
     }
 
 
-
     @Override
     public String saveFile(MultipartFile file, String username) {
         String filename = StringUtils.cleanPath(file.getOriginalFilename());
@@ -52,6 +55,20 @@ public class VideoStorageConfigImpl implements VideoStorageConfig {
         }catch (Exception e){
             throw new VideoStorageException("The video was not saved, please try again");
         }
+    }
+
+    @Override
+    public Resource loadFile(String path, String username) {
+        try {
+            Path pathFile = Path.of(pathDir);
+            Path locationPath = Path.of(pathFile+"\\"+username);
+            Path resolvePath = locationPath.resolve(path).normalize();
+            Resource resource = new UrlResource(resolvePath.toUri());
+            return resource;
+        }catch (Exception e){
+            throw new LoadVideoException("Download URL was not found");
+        }
+
     }
 
     private void createFolder(Path path, String limiter, String username) {

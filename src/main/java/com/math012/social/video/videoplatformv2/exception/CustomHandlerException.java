@@ -49,4 +49,16 @@ public class CustomHandlerException extends ResponseEntityExceptionHandler {
         var exception = new StructException(new Date(), e.getMessage(), request.getDescription(false));
         return new ResponseEntity<>(exception, HttpStatus.BAD_REQUEST);
     }
+
+    @ExceptionHandler(RegisterUserException.class)
+    public ResponseEntity<StructException> handlerRegisterUserException(Exception e, WebRequest request){
+        var exception = new StructException(new Date(), e.getMessage(), request.getDescription(false));
+        return new ResponseEntity<>(exception, HttpStatus.BAD_REQUEST);
+    }
+
+    @ExceptionHandler(LoadVideoException.class)
+    public ResponseEntity<StructException> handlerLoadVideoException(Exception e, WebRequest request){
+        var exception = new StructException(new Date(), e.getMessage(), request.getDescription(false));
+        return new ResponseEntity<>(exception, HttpStatus.BAD_REQUEST);
+    }
 }

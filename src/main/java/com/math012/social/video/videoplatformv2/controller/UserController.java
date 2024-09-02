@@ -8,11 +8,9 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("auth")
 public class UserController {
     @Autowired
     private UserService userService;
-
 
     @PostMapping("/v2/auth/login")
     public ResponseEntity<String> login(@RequestBody UserDTO userDTO){

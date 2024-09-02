@@ -23,12 +23,17 @@ public class UserModel implements UserDetails {
     @Column(nullable = false)
     private String lastName;
 
-
     @Column(unique = true, nullable = false)
     private String username;
 
     @Column(nullable = false)
     private String password;
+
+    @Column(nullable = true)
+    private String description;
+
+    @Column(nullable = true)
+    private String profilePhoto;
 
     @OneToMany(mappedBy = "user")
     private List<VideoModel> videos = new ArrayList<>();
@@ -40,6 +45,15 @@ public class UserModel implements UserDetails {
         this.lastName = lastName;
         this.username = username;
         this.password = password;
+    }
+
+    public UserModel(String fullName, String lastName, String username, String password, String description, String profilePhoto) {
+        this.fullName = fullName;
+        this.lastName = lastName;
+        this.username = username;
+        this.password = password;
+        this.description = description;
+        this.profilePhoto = profilePhoto;
     }
 
     public UUID getId() {
@@ -105,6 +119,22 @@ public class UserModel implements UserDetails {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public String getProfilePhoto() {
+        return profilePhoto;
+    }
+
+    public void setProfilePhoto(String profilePhoto) {
+        this.profilePhoto = profilePhoto;
     }
 
     public List<VideoModel> getVideos() {

@@ -1,6 +1,6 @@
 package com.math012.social.video.videoplatformv2.config.security;
 
-import com.math012.social.video.videoplatformv2.exception.TokenProviderException;
+import com.auth0.jwt.JWT;
 import com.math012.social.video.videoplatformv2.repository.UserRepository;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
@@ -29,12 +29,13 @@ public class SecurityFilter extends OncePerRequestFilter {
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException {
         var token = this.recoverToken(request);
         if (token != null) {
-            var username = tokenProvider.validateToken(token);
-            UserDetails user = repository.findByUsername(username).get();
-
-            if (user != null) {
+            var optionalUser = repository.findByUsername(JWT.decode(token).getSubject());
+            if (optionalUser.isPresent()){
+                UserDetails user = optionalUser.get();
                 var authentication = new UsernamePasswordAuthenticationToken(user, null, user.getAuthorities());
                 SecurityContextHolder.getContext().setAuthentication(authentication);
+            }else {
+                System.out.println("no value");
             }
         }
         filterChain.doFilter(request, response);

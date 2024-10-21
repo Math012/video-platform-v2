@@ -4,6 +4,7 @@ import com.math012.social.video.videoplatformv2.model.CommentModel;
 import com.math012.social.video.videoplatformv2.model.VideoModel;
 import jakarta.transaction.Transactional;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
@@ -17,4 +18,12 @@ public interface CommentRepository extends JpaRepository<CommentModel, UUID> {
     @Transactional
     @Query("SELECT comment FROM CommentModel comment WHERE comment.video=:video")
     List<CommentModel> findAllCommentByVideo(@Param("video")VideoModel videoModel);
+
+
+    @Modifying
+    @Transactional
+    @Query("DELETE FROM CommentModel comment WHERE comment.video.id=:videoId")
+    void deleteCommentByVideoId(@Param("videoId")UUID videoId);
+
+
 }

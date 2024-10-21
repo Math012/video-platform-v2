@@ -1,7 +1,7 @@
 package com.math012.social.video.videoplatformv2.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
-import jakarta.validation.constraints.Size;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
@@ -13,19 +13,23 @@ import java.util.UUID;
 @Entity
 public class UserModel implements UserDetails {
 
+
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
     private UUID id;
 
+    @JsonIgnore
     @Column(nullable = false)
     private String fullName;
 
+    @JsonIgnore
     @Column(nullable = false)
     private String lastName;
 
     @Column(unique = true, nullable = false)
     private String username;
 
+    @JsonIgnore
     @Column(nullable = false)
     private String password;
 
@@ -34,6 +38,7 @@ public class UserModel implements UserDetails {
 
     @Column(nullable = true)
     private String profilePhoto;
+
 
     @OneToMany(mappedBy = "user")
     private List<VideoModel> videos = new ArrayList<>();
@@ -47,11 +52,7 @@ public class UserModel implements UserDetails {
         this.password = password;
     }
 
-    public UserModel(String fullName, String lastName, String username, String password, String description, String profilePhoto) {
-        this.fullName = fullName;
-        this.lastName = lastName;
-        this.username = username;
-        this.password = password;
+    public UserModel(String description, String profilePhoto) {
         this.description = description;
         this.profilePhoto = profilePhoto;
     }
@@ -80,26 +81,29 @@ public class UserModel implements UserDetails {
         this.lastName = lastName;
     }
 
+    @JsonIgnore
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         return List.of();
     }
 
+    @JsonIgnore
     @Override
     public boolean isAccountNonExpired() {
         return true;
     }
-
+    @JsonIgnore
     @Override
     public boolean isAccountNonLocked() {
         return true;
     }
-
+    @JsonIgnore
     @Override
     public boolean isCredentialsNonExpired() {
         return true;
     }
 
+    @JsonIgnore
     @Override
     public boolean isEnabled() {
         return true;

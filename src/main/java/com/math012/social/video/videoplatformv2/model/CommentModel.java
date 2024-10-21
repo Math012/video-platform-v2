@@ -14,10 +14,10 @@ public class CommentModel {
     @GeneratedValue(strategy = GenerationType.UUID)
     private UUID id;
 
-    @Size(min = 1, max = 400, message = "Minumum is 1 and maximum is 400")
+    @Size(min = 1, max = 400, message = "Minimum is 1 and maximum is 400")
     private String text;
 
-    @JsonIgnore
+
     @ManyToOne
     @JoinColumn(name = "uuid_user")
     private UserModel user;

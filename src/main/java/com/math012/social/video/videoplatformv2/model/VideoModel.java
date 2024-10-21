@@ -20,10 +20,11 @@ public class VideoModel {
     @Size(min = 1)
     private String description;
 
-
     private String url;
 
     private Instant date;
+
+    private String thumbnail;
 
     @JsonIgnore
     @ManyToOne
@@ -78,6 +79,14 @@ public class VideoModel {
 
     public void setDate(Instant date) {
         this.date = date;
+    }
+
+    public String getThumbnail() {
+        return thumbnail;
+    }
+
+    public void setThumbnail(String thumbnail) {
+        this.thumbnail = thumbnail;
     }
 
     public UserModel getUser() {

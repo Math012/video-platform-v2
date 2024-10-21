@@ -1,12 +1,8 @@
 package com.math012.social.video.videoplatformv2.config.security;
 
-import com.math012.social.video.videoplatformv2.exception.SecurityAuthenticationException;
-import com.math012.social.video.videoplatformv2.exception.SecurityConfigException;
-import com.math012.social.video.videoplatformv2.exception.TokenProviderException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.http.HttpMethod;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.authentication.configuration.AuthenticationConfiguration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -37,14 +33,21 @@ public class SecurityConfiguration {
                                 ,"/comment/**"
                                 ,"/videos/user/**"
                                 ,"/api/v2/post/video/download/**"
+                                ,"/api/v2/post/thumbnail/download/**"
+                                ,"/api/v2/post/photo/download/**"
+                                ,"/videos/pageable"
+                                ,"/video/detail/**"
+                                ,"/all/videos/**"
+                                ,"/all/channels"
+                                ,"/user/info/**"
+                                ,"/video/username/videos/**"
                         )
                         .permitAll()
-                        .requestMatchers("/api/v2/**").authenticated()
+                        .requestMatchers("/api/v2/**","/change/description/user/**").authenticated()
                 )
                 .addFilterBefore(securityFilter, UsernamePasswordAuthenticationFilter.class)
                 .build();
     }
-
 
     @Bean
     public AuthenticationManager authenticationManager(AuthenticationConfiguration authenticationConfiguration) throws Exception {

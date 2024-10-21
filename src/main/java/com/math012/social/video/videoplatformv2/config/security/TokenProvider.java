@@ -9,9 +9,7 @@ import com.math012.social.video.videoplatformv2.model.UserModel;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
-import java.time.Instant;
-import java.time.LocalDateTime;
-import java.time.ZoneOffset;
+
 import java.util.Date;
 
 @Service
@@ -20,8 +18,6 @@ public class TokenProvider {
 
     @Value("${security.jwt.token.secret-key:secret}")
     private String secretKey = "secret";
-
-
 
     private long validationTime = 18000000;
 

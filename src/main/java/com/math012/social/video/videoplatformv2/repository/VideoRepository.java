@@ -17,4 +17,8 @@ public interface VideoRepository extends JpaRepository<VideoModel, UUID> {
     @Transactional
     @Query("SELECT video FROM VideoModel video WHERE video.user=:user")
     List<VideoModel> findAllVideosByUsername(@Param("user")UserModel userModel);
+
+    @Transactional
+    @Query("SELECT video.user.id FROM VideoModel video WHERE video.id=:videoId")
+    UUID findUsernameByVideoId(@Param("videoId")UUID videoId);
 }

@@ -1,0 +1,4 @@
+Manifest-Version: 1.0
+Main-Class: com.math012.social.video.videoplatformv2.VideoPlatformV2Appl
+ ication
+

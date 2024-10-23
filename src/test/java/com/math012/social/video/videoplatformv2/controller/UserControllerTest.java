@@ -379,6 +379,17 @@ public class UserControllerTest {
     }
 
     @Test
+    void uploadPhotoProfileFailedUserNotAuthenticated() throws Exception {
+        mockMvc.perform(multipart("/api/v2/post/photo/profile/{username}", "Zooe")
+                        .file(FILE)
+                        .contentType(MediaType.MULTIPART_FORM_DATA).characterEncoding("utf-8")
+                )
+                .andExpect(status().isForbidden())
+
+        ;
+    }
+
+    @Test
     void uploadPhotoProfileFailedWhenTheFormatOfFileIsInvalid() throws Exception {
         mockMvc.perform(multipart("/api/v2/post/photo/profile/{username}", "Zooe")
                         .file(FILE_INVALID)
@@ -411,16 +422,15 @@ public class UserControllerTest {
         when(photoStorageConfig.loadFile("filename.png","Zooe")).thenReturn(resource);
         when(photoStorageConfig.loadFile(FILE.getOriginalFilename(),"Zooe")).thenReturn(resource);
         mockMvc.perform(get("/api/v2/post/photo/download/{username}/{path}", "Zooe", "filename.png")
-                        .header("Authorization",TOKEN_JWT)
                         .header("CONTENT_DISPOSITION","attachment; path=\""+resource.getFilename())
                         .contentType(MediaType.APPLICATION_OCTET_STREAM).characterEncoding("utf-8"))
                 .andDo(print());
     }
 
+
     @Test
     void findAllVideosByUsernameSuccess() throws Exception {
         mockMvc.perform(get("/all/videos/{username}","Zooe")
-                .header("Authorization",TOKEN_JWT)
                 .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$[0].title").exists())
@@ -450,6 +460,16 @@ public class UserControllerTest {
                 .content(String.valueOf(json)).characterEncoding("utf-8"))
                 .andExpect(status().isOk())
                 .andExpect(result -> assertEquals(result.getResponse().getContentAsString(),"Description has been changed"));
+    }
+
+    @Test
+    void changeTheUserDescriptionFailedUserNotAuthenticated() throws Exception {
+        var json = new Gson().toJson(DESCRIPTION_DTO);
+        mockMvc.perform(post("/change/description/user/{username}","Zooe")
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content(String.valueOf(json)).characterEncoding("utf-8"))
+                .andExpect(status().isForbidden())
+        ;
     }
 
     @Test

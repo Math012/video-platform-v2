@@ -124,6 +124,18 @@ public class CommentControllerTest {
     }
 
     @Test
+    void postCommentFailedUserNotAuthenticated() throws Exception {
+        var json = new Gson().toJson(COMMENT_DTO);
+        mockMvc.perform(post("/api/v2/video/comment/{username}/{videoId}",USERNAME_AUTHENTICATED, UUID_USER)
+                .content(json)
+                .contentType(MediaType.APPLICATION_JSON)
+
+        )
+                .andExpect(status().isForbidden())
+        ;
+    }
+
+    @Test
     void postCommentFailedWhenUsernameIsNotRegistered() throws Exception {
         var json = new Gson().toJson(COMMENT_DTO);
         mockMvc.perform(post("/api/v2/video/comment/{username}/{videoId}","Paul", UUID_USER)

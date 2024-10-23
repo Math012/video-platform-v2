@@ -162,7 +162,7 @@ public class UserControllerTest {
                 ,new VideoModel("title 4","description 4","url 4",USER, Instant.now()));
 
         when(userService.findAllVideosByUsername("Zooe")).thenReturn(ResponseEntity.ok(videos));
-        when(userService.findAllVideosByUsername("Law")).thenThrow(new LoadVideoException("The user's Law videos could not be loaded, please try again"));
+        when(userService.findAllVideosByUsername("Law")).thenThrow(new UserNotFoundException("The user's Law videos could not be loaded, please try again"));
         // FIND USERS BY USERNAME TEST
         when(userService.findUserByUsername("Zooe")).thenReturn(ResponseEntity.ok(USER));
         when(userService.findUserByUsername("Law")).thenThrow(new UserNotFoundException("Username Law not found, try again"));
@@ -445,7 +445,7 @@ public class UserControllerTest {
                         .header("Authorization",TOKEN_JWT)
                         .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isNotFound())
-                .andExpect(result -> assertTrue(result.getResolvedException() instanceof LoadVideoException))
+                .andExpect(result -> assertTrue(result.getResolvedException() instanceof UserNotFoundException))
                 .andExpect(jsonPath("$.msg").value("The user's Law videos could not be loaded, please try again"))
                 .andExpect(jsonPath("$.timestamp").exists());
 

@@ -28,7 +28,7 @@ import java.util.List;
 
 @RestController
 @CrossOrigin("*")
-@Tag(name = "video-platform-v2", description = "Controlador para autenticação e dados de usuários")
+@Tag(name = "UserController", description = "Controlador para autenticação e dados de usuários")
 @SecurityRequirement(name = "Application Security")
 public class UserController {
     @Autowired

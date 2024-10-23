@@ -30,7 +30,7 @@ import java.util.UUID;
 
 @RestController
 @CrossOrigin("*")
-@Tag(name = "video-platform-v2", description = "Controlador para gerenciar os videos do usuário")
+@Tag(name = "VideoController", description = "Controlador para gerenciar os videos do usuário")
 public class VideoController {
 
     @Autowired

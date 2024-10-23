@@ -1,5 +1,8 @@
 package com.math012.social.video.videoplatformv2.config.security;
 
+import io.swagger.v3.oas.annotations.enums.SecuritySchemeType;
+import io.swagger.v3.oas.annotations.security.SecurityScheme;
+import org.apache.catalina.security.SecurityConfig;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -15,6 +18,7 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 
 @Configuration
 @EnableWebSecurity
+@SecurityScheme(name = "Application Security", type = SecuritySchemeType.HTTP, bearerFormat = "JWT", scheme = "bearer")
 public class SecurityConfiguration {
 
     @Autowired
@@ -41,6 +45,9 @@ public class SecurityConfiguration {
                                 ,"/all/channels"
                                 ,"/user/info/**"
                                 ,"/video/username/videos/**"
+                                ,"/v3/api-docs/**"
+                                ,"/swagger-ui/**"
+                                ,"/swagger-ui.html"
                         )
                         .permitAll()
                         .requestMatchers("/api/v2/**","/change/description/user/**").authenticated()

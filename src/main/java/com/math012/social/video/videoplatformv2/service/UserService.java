@@ -79,7 +79,7 @@ public class UserService implements UserDetailsService {
 
 
     public ResponseEntity<List<VideoModel>> findAllVideosByUsername(String username){
-        if (userRepository.findByUsername(username).isEmpty()) throw new LoadVideoException("The user's "+username+" videos could not be loaded, please try again");
+        if (userRepository.findByUsername(username).isEmpty()) throw new UserNotFoundException("The user's "+username+" videos could not be loaded, please try again");
         return ResponseEntity.ok(userRepository.findAllVideosByUsername(username));
 
     }

@@ -200,6 +200,7 @@ public class VideoControllerTest {
         ;
     }
 
+
     @Test
     void uploadVideoFailedWithThumbnailFileNotAuthenticated() throws Exception{
         var json = new Gson().toJson(VIDEO_DTO);

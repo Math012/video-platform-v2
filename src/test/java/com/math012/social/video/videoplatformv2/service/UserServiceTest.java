@@ -251,7 +251,7 @@ public class UserServiceTest {
     @Test
     void findAllVideosByUsernameFailedWhenTheUsernameIsEmpty(){
         String username = "";
-        Exception exception = assertThrows(LoadVideoException.class, () ->{
+        Exception exception = assertThrows(UserNotFoundException.class, () ->{
             userService.findAllVideosByUsername(username);
         });
         assertEquals("The user's  videos could not be loaded, please try again", exception.getMessage());
@@ -259,7 +259,7 @@ public class UserServiceTest {
 
     @Test
     void findAllVideosByUsernameFailedWhenTheUsernameIsNotRegistered(){
-        Exception exception = assertThrows(LoadVideoException.class, () ->{
+        Exception exception = assertThrows(UserNotFoundException.class, () ->{
            userService.findAllVideosByUsername(USERNAME_REGISTER);
         });
         assertEquals("The user's AnnyBrian videos could not be loaded, please try again", exception.getMessage());

@@ -39,7 +39,7 @@ public class SecurityConfiguration {
                                 ,"/api/v2/post/video/download/**"
                                 ,"/api/v2/post/thumbnail/download/**"
                                 ,"/api/v2/post/photo/download/**"
-                                ,"/videos/pageable"
+                                ,"/videos/pageable/**"
                                 ,"/video/detail/**"
                                 ,"/all/videos/**"
                                 ,"/all/channels"

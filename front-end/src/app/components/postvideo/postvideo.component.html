@@ -1,0 +1,16 @@
+<label class="form-label" for="customFile"  >Selecione o vídeo que deseja postar (obrigatório)</label>
+<input type="file" class="form-control" id="customFile" (change)="onFileSelected($event)"/>
+<br>
+<label class="form-label" for="customFile"  >Selecione uma thumbnail para o seu vídeo</label>
+<input type="file" class="form-control" id="customFile" (change)="onFileSelectedThumbnail($event)"/>
+<div >
+<mdb-form-control class="main-video-post">
+  <input mdbInput type="text" id="form1" class="form-control" [(ngModel)] = "video.title"/>
+  <label mdbLabel class="form-label" for="form1">Titulo</label>
+</mdb-form-control>
+<mdb-form-control class="main-video-post">
+  <input mdbInput type="text" id="form1" class="form-control" [(ngModel)] = "video.description" name="description"/>
+  <label mdbLabel class="form-label" for="form1">Descrição</label>
+</mdb-form-control>
+<button type="button" class="btn btn-dark" mdbRipple (click)="postVideoUser()">Enviar um vídeo</button>
+</div>

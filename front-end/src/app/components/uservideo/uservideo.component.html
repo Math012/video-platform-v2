@@ -1,0 +1,50 @@
+<body>
+  <h1 class="main-title">Seus vídeos</h1>
+  <button type="button" class="btn btn-dark" mdbRipple (click)="postVideo()">Enviar um vídeo</button>
+  <div class="main-card">
+    @for (video of lista; track $index) {
+      <button class="main-button" (click)="openVideo(video)">
+    <div class="card">
+      
+      @if (video.thumbnail) {
+      <div class="bg-image hover-overlay" mdbRipple rippleColor="light">
+        <img src={{video.thumbnail}} class="img-fluid"/>
+          <div class="mask" style="background-color: rgba(251, 251, 251, 0.15);"></div>
+      </div>
+    }@else {
+      <div class="bg-image hover-overlay" mdbRipple rippleColor="light">
+        <img src="assets/defaultthumbnail.jpg" class="img-fluid"/>
+          <div class="mask" style="background-color: rgba(251, 251, 251, 0.15);"></div>
+      </div>
+    }
+      <div class="card-body">
+        <h5 class="card-title">
+          {{video.title}}
+        </h5>
+        
+        
+        
+      </div>
+     
+   
+    </div>
+  
+  </button>
+}
+  </div>
+</body>
+
+<ng-template #modalUserVideo>
+<div class="modal-header">
+  <h5 class="modal-title" id="exampleModalLabel">Enviar um vídeo</h5>
+  <button
+    type="button"
+    class="btn-close"
+    aria-label="Close"
+    (click)="modalRef.close()"
+  ></button>
+</div>
+<div class="modal-body">
+  <app-postvideo (videoRetorno)="videoRetorno($event)"></app-postvideo>
+</div>
+</ng-template>

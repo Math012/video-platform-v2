@@ -1,0 +1,69 @@
+<app-menu></app-menu>
+<body class="main-body-login">
+<div class="main-form">
+<mdb-tabs [pills]="true" [fill]="true">
+  <mdb-tab  title="Login">
+
+    <form>
+      <!-- Email input -->
+      <mdb-form-control class="mb-4">
+        <input mdbInput type="text" id="loginName" class="form-control" [(ngModel)] = "login.username" name="username"/>
+        <label mdbLabel class="form-label" for="loginName">Username</label>
+      </mdb-form-control>
+
+      <!-- Password input -->
+      <mdb-form-control class="mb-4">
+        <input mdbInput type="password" id="loginPassword" class="form-control" [(ngModel)] = "login.password" name="password"/>
+        <label mdbLabel class="form-label" for="loginPassword">Password</label>
+      </mdb-form-control>
+
+      <!-- 2 column grid layout -->
+      <div class="row mb-4">
+        <div class="col-md-6 d-flex justify-content-center">
+        </div>
+      </div>
+
+      <!-- Submit button -->
+      <button mdbRipple type="submit" class="btn btn-primary btn-block mb-4" (click)="loginUser()">
+        Sign in
+      </button>
+    </form></mdb-tab
+  >
+  <mdb-tab title="Register">
+    <form>
+      <div class="text-center mb-3">
+
+      </div>
+      <!-- Name input -->
+      <mdb-form-control class="mb-4">
+        <input mdbInput type="text" id="registerName" class="form-control" [(ngModel)]="registerDTO.fullName" name="username"/>
+        <label mdbLabel class="form-label" for="registerName">Nome</label>
+      </mdb-form-control>
+
+      <!-- Username input -->
+      <mdb-form-control class="mb-4">
+        <input mdbInput type="text" id="registerUsername" class="form-control" [(ngModel)]="registerDTO.lastName" name="lastname"/>
+        <label mdbLabel class="form-label" for="registerUsername">Sobrenome</label>
+      </mdb-form-control>
+
+      <!-- Email input -->
+      <mdb-form-control class="mb-4">
+        <input mdbInput type="email" id="registerEmail" class="form-control" [(ngModel)]="registerDTO.username" name="username"/>
+        <label mdbLabel class="form-label" for="registerEmail">Nome de usuário</label>
+      </mdb-form-control>
+
+      <!-- Password input -->
+      <mdb-form-control class="mb-4">
+        <input mdbInput type="password" id="registerPassword" class="form-control" [(ngModel)]="registerDTO.password" name="password"/>
+        <label mdbLabel class="form-label" for="registerPassword">Password</label>
+      </mdb-form-control>
+
+      <!-- Submit button -->
+      <button mdbRipple type="submit" class="btn btn-primary btn-block mb-3" (click)="registerUser()">
+        Sign up
+      </button>
+    </form></mdb-tab
+  >
+</mdb-tabs>
+</div>
+</body>

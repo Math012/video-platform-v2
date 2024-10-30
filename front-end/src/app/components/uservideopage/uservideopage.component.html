@@ -1,0 +1,25 @@
+<body>
+  <h1 class="main-title-channel">{{usernameTitle}} videos</h1>
+  <div class="main-card">
+    @for (video of lista; track $index) {
+      <button class="main-button" (click)="openVideo(video)">
+    <div class="card">
+      <div class="bg-image hover-overlay" mdbRipple rippleColor="light">
+        @if (video.thumbnail) {
+        <img src={{video.thumbnail}} class="img-fluid"/>
+          <div class="mask" style="background-color: rgba(251, 251, 251, 0.15);"></div>
+        }@else {
+          <img src="assets/defaultthumbnail.jpg" class="img-fluid"/>
+          <div class="mask" style="background-color: rgba(251, 251, 251, 0.15);"></div>
+        }
+      </div>
+
+      <div class="card-body">
+        <h5 class="card-title">{{video.title}}</h5>
+      </div>
+    </div>
+  </button>
+}
+  </div>
+</body>
+

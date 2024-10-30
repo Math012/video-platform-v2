@@ -1,0 +1,26 @@
+<ul class="list-group list-group-light">
+  @if (videos.length == 0) {
+    <li class="list-group-item d-flex justify-content-between align-items-center">
+      <div class="d-flex align-items-center">
+        <div class="ms-3">
+          <p class="fw-bold mb-1">{{loginService.getUsernameFromLocalStorage()}}</p>
+          <p>Você não possui vídeos!</p>
+        </div>
+      </div>
+     
+    </li>
+  }
+  @for (video of videos; track $index) {
+    
+    <li class="list-group-item d-flex justify-content-between align-items-center">
+      <div class="d-flex align-items-center">
+        <div class="ms-3">
+          <p class="fw-bold mb-1">{{loginService.getUsernameFromLocalStorage()}}</p>
+          <a href="admin/videos/{{video.id}}"><p class="text-muted mb-0">{{video.title}}</p></a>
+          
+        </div>
+      </div>
+      <button type="button" class="btn btn-outline-danger" data-mdb-ripple-init data-mdb-ripple-color="dark" (click)="deleteVideo(video)">Deletar</button>
+    </li>
+  }
+  </ul>

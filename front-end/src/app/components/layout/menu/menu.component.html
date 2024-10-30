@@ -1,0 +1,85 @@
+<!-- Navbar-->
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <div class="container-fluid justify-content-between">
+   <div class="d-flex">
+      <a class="navbar-brand me-2 mb-1 d-flex align-items-center" href="/admin/videos">
+        <img
+          src="https://upload.wikimedia.org/wikipedia/commons/9/91/Octicons-mark-github.svg"
+          height="20"
+          alt=""
+          loading="lazy"
+          style="margin-top: 2px;"
+        />
+      </a>
+     <li class="item-menu">
+      <a href="admin/videos">Home</a>
+     </li>
+     <li class="item-menu">
+      <a href="admin/channels">Canais</a>
+     </li>
+     @if (loginService.userHasLogin()) {
+     <li class="item-menu">
+      <a href="admin/uservideos">Meus vídeos</a>
+     </li>
+     <li class="item-menu">
+      <a href="admin/profile">Perfil</a>
+     </li>
+     <li class="item-menu">
+      <a href="admin/managevideos">Gerenciar vídeos</a>
+     </li>
+
+
+
+    }
+
+    </div>
+
+
+    @if (loginService.userHasLogin()) {
+    <ul class="navbar-nav flex-row">
+      <li class="nav-item me-3 me-lg-1">
+        <a class="nav-link d-sm-flex align-items-sm-center" href="/admin/profile">
+          @if (user.profilePhoto) {
+          <img
+            src={{user.profilePhoto}}
+            class="rounded-circle"
+            height="22"
+            alt=""
+            loading="lazy"
+          />
+        }@else {
+          <img
+            src="assets/defaultthumbnail.jpg"
+            class="rounded-circle"
+            height="22"
+            alt=""
+            loading="lazy"
+          />
+
+        }
+          <strong class="d-none d-sm-block ms-1">{{user.username}}</strong>
+        </a>
+
+
+      </li>
+      <li class="main-logout">
+        <a class="main-logout" href="/login">Sair</a>
+       </li>
+      <li class="nav-item me-3 me-lg-1">
+    </ul>
+  }@else {
+    <ul class="navbar-nav flex-row">
+      <li class="nav-item me-3 me-lg-1">
+        <a class="nav-link d-sm-flex align-items-sm-center" href="/login">
+          <strong class="d-none d-sm-block ms-1">fazer login</strong>
+        </a>
+      </li>
+      <li class="nav-item me-3 me-lg-1">
+    </ul>
+  }
+
+  </div>
+
+
+</nav>
+

@@ -1,0 +1,87 @@
+<body class="main-body">
+  <div class="main-video-player">
+    <vg-player (onPlayerReady)="onPlayerReady($event)">
+      <vg-overlay-play></vg-overlay-play>
+      <vg-buffering vgFor="singleVideo"></vg-buffering>
+      <vg-scrub-bar>
+        <vg-scrub-bar-current-time></vg-scrub-bar-current-time>
+        <vg-scrub-bar-buffering-time></vg-scrub-bar-buffering-time>
+      </vg-scrub-bar>
+      <vg-controls>
+        <vg-play-pause></vg-play-pause>
+        <vg-playback-button></vg-playback-button>
+        <vg-time-display vgProperty="current" vgFormat="mm:ss"></vg-time-display>
+        <vg-scrub-bar style="pointer-events: none;"></vg-scrub-bar>
+        <vg-time-display vgProperty="left" vgFormat="mm:ss"></vg-time-display>
+        <vg-time-display vgProperty="total" vgFormat="mm:ss"></vg-time-display>
+        <vg-track-selector></vg-track-selector>
+        <vg-mute></vg-mute>
+        <vg-volume></vg-volume>
+        <vg-fullscreen></vg-fullscreen>
+      </vg-controls>
+      <video [vgMedia]="$any(media)"
+              #media id="singleVideo"
+              preload="auto"
+              src={{video.url}}
+              crossorigin>
+      </video>
+    </vg-player>
+  </div>
+  <div class="main-date-time">
+    <i class="fas fa-user"></i>
+    @if (user.username == loginService.getUsernameFromLocalStorage()) {
+      <a href="/admin/uservideos"><p>{{user.username}}</p></a>
+    }@else {
+      <a href="admin/videos/by/{{user.username}}"><p>{{user.username}}</p></a>
+      
+    }
+  
+    
+    <i class="far fa-calendar-alt"></i>
+    <p>{{video.date | date}}</p>
+    
+   
+    
+  </div>
+ 
+
+  <div class="main-video-description">
+    <p class="lh-1">{{video.description}}</p>
+  
+  </div>
+</body>
+
+
+
+<div>
+  <h2>comentarios</h2>
+  <div class="main-box-comentary">
+    <div class="comentary-bar">
+      <div class="input-group mb-3">
+        <input type="text" class="form-control" placeholder="Poste um comentário" aria-label="Recipient's username"aria-describedby="button-addon2" [(ngModel)]="commentary.text"/>
+        <button class="btn btn-outline-primary" type="button" id="button-addon2" mdbRipple rippleColor="danger" (click)="postComment()">
+          Postar
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+<ul class="list-group list-group-light">
+  @for (item of lista; track $index) {
+  <li class="list-group-item d-flex justify-content-between align-items-center">
+    <div class="d-flex align-items-center">
+      <div class="ms-3">
+        <p class="fw-bold mb-1">{{item.user.username}}</p>
+        <p class="text-muted mb-0">{{item.text}}</p>
+      </div>
+    </div>
+    @if (item.user.username == loginService.getUsernameFromLocalStorage()) {
+      <div class="main-delete">
+        <button class="main-btn-delete" (click)="deleteComment(item)">
+          <img src="assets/delete.png" />
+        </button>
+      </div>
+    }
+  </li>}
+</ul>
+

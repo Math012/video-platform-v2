@@ -1,0 +1,47 @@
+
+<h2>Canais da comunidade</h2>
+<body class="main-body-channel">
+  <div class="row">
+    @for (user of users; track $index) {
+    <div class="col-xl-4 col-lg-6 mb-4">
+      <div class="card">
+        <div class="card-body">
+          <div class="d-flex align-items-center">
+            @if (user.profilePhoto) {
+            <img
+              src={{user.profilePhoto}}
+              alt=""
+              style="width: 45px; height: 45px"
+              class="rounded-circle"
+            />
+          }@else {
+
+            <img
+              src="assets/defaultthumbnail.jpg"
+              alt=""
+              style="width: 45px; height: 45px"
+              class="rounded-circle"
+            />
+
+          }
+            <div class="ms-3">
+              <p class="fw-bold mb-1">{{user.username}}</p>
+              @if (user.description) {
+              <p class="text-muted mb-0">{{user.description}}</p>
+            }@else {
+              <p class="text-muted mb-0">sem bio</p>
+            }@if (user.username == loginService.getUsernameFromLocalStorage()) {
+              <button class="main-channel-button" (click)="openMainUserVideos(user)">acessar o canal</button>
+            }@else {
+              <button class="main-channel-button" (click)="openUserVideos(user)">acessar o canal</button>
+            }
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  }
+  </div>
+</body>
+
+

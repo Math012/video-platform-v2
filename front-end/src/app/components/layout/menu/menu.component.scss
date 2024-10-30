@@ -1,0 +1,35 @@
+.d-flex{
+  list-style-type: none;
+
+}
+li{
+  margin-left: 18px;
+  margin-top: 3px;
+}
+
+.item-menu{
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-weight: bold;
+}
+
+.navbar-nav img{
+  width: 30px;
+  height: 30px;
+  object-fit: cover;
+  overflow: hidden;
+}
+
+a{
+  text-decoration: none;
+  color: inherit;
+  font-size: 22px;
+}
+
+
+.main-logout{
+  margin-top: 11px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-weight: bold;
+  font-size: 22px;
+
+}

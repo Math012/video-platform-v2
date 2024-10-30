@@ -1,0 +1,6 @@
+<label class="form-label" for="customFile"  >Selecione uma foto para o seu perfil </label>
+<input type="file" class="form-control" id="customFile" (change)="onFileSelected($event)"/>
+<br>
+<div >
+<button type="button" class="btn btn-dark" mdbRipple (click)="postProfilePhotoUser()">Enviar a foto</button>
+</div>

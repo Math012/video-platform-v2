@@ -34,6 +34,39 @@ Projeto desenvolvido para a minha evolução com as tecnologias do Spring Boot.
 - ✅ JACOCO
 - ✅ Spring doc com Swagger [api-documentation.pdf](https://github.com/user-attachments/files/17576625/api-documentation.pdf)
 
+  ## Screenshots
+
+- CADASTRO
+
+![cadastro](https://github.com/user-attachments/assets/34a92b4b-8066-462a-8dbb-18bfeac7a2b0)
+
+
+- LOGIN
+
+![login](https://github.com/user-attachments/assets/b4bd5591-ec63-4867-8af1-7fc499407f1c)
+
+- HOME
+  
+![home](https://github.com/user-attachments/assets/c02fc9de-30ae-437d-8cda-b9b3a2871980)
+
+
+- CANAIS DA COMUNIDADE
+
+![canais](https://github.com/user-attachments/assets/b50eb93b-c376-4cac-87c5-1c3b95328063)
+
+- VÍDEOS DO USUÁRIO
+  
+![seus vídeos](https://github.com/user-attachments/assets/c344748c-63d6-4140-aa32-200d0cc6ec64)
+
+- PERFIL
+  
+![perfil](https://github.com/user-attachments/assets/deefe46d-c6ed-4dfc-9adb-e58a2da9d600)
+
+GERENCIAMENTO DE VÍDEOS
+
+![gerenciador de vídeos](https://github.com/user-attachments/assets/fc809a5c-fca0-4d55-bd30-37767a75d91e)
+
+
 ## ❗️Executando o projeto
 
 ### Para executar o projeto back-end
@@ -55,9 +88,19 @@ Para executar este front-end, você precisa instalar o npm, node.js 20.13.1 e o 
 
 Baixe a pasta chamada "front-end" e abra com a sua ferramenta de desenvolvimento.
 
-Abra o terminal e digite "ng s" 
+Abra o integrated terminal e digite "npm install" e depois "ng s" 
+
+![executando o front end](https://github.com/user-attachments/assets/f0b6bfac-b2b3-4183-8cd0-6d07c54da9d9)
 
 por padrão, o projeto é localizado na url: http://localhost:4200/
+
+### Possíveis erros
+
+Ao abrir o projeto back-end através do IntelliJ, o projeto pode apresentar o erro: "IntelliJ: Cannot resolve symbol 'springframework'".
+Para corrigir este erro, abra as configurações do Maven, selecione o nome do projeto "video-platform-v2" e selecione "Reload All Maven Projects".
+
+![image](https://github.com/user-attachments/assets/81a69512-0a4c-489c-a3fc-99d691a06a82)
+
 
 ### Referências
 

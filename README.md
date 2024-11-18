@@ -58,6 +58,10 @@ Projeto desenvolvido para a minha evolução com as tecnologias do Spring Boot.
   
 ![seus vídeos](https://github.com/user-attachments/assets/c344748c-63d6-4140-aa32-200d0cc6ec64)
 
+- PAGINA DO VÍDEO
+  
+ ![image](https://github.com/user-attachments/assets/11fba9f4-948a-47d3-a6ab-0ca13ac680db)
+
 - PERFIL
   
 ![perfil](https://github.com/user-attachments/assets/deefe46d-c6ed-4dfc-9adb-e58a2da9d600)

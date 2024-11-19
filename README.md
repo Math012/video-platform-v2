@@ -70,6 +70,9 @@ GERENCIAMENTO DE VÍDEOS
 
 ![gerenciador de vídeos](https://github.com/user-attachments/assets/fc809a5c-fca0-4d55-bd30-37767a75d91e)
 
+- JACOCO
+  
+  ![image](https://github.com/user-attachments/assets/e43667a1-419e-4d85-a9d0-8fe96c91ec14)
 
 ## ❗️Executando o projeto
 
